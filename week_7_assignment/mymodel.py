@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
+import os
 import plotly.express as px
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -11,7 +12,7 @@ from sklearn.metrics import classification_report
 # Load and preprocess the data
 @st.cache_resource
 def load_data():
-    df = pd.read_csv("social_media_engagement1.csv")
+    df = pd.read_csv(os.path.join(os.path.dirname(__file__), "social_media_engagement1.csv"))
     
     # Encode categorical columns
     label_encoders = {}
