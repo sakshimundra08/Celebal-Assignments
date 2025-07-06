@@ -12,7 +12,7 @@ and shares using a **Random Forest Classifier**. The application is built using 
 
 
 
-Overview
+**Overview**
 
 Predicts sentiment (`positive`, `neutral`, `negative`) of social media posts based on:
 - Platform (e.g., Facebook, Twitter)
@@ -21,7 +21,7 @@ Predicts sentiment (`positive`, `neutral`, `negative`) of social media posts bas
 - Engagement stats (likes, comments, shares)
 
 
-Built with:
+**Built with:**
 
 - Python, pandas, NumPy
 - scikit-learn (RandomForestClassifier)
@@ -29,7 +29,7 @@ Built with:
 - Plotly for visualizations
 
 
-How to Run Locally:
+**How to Run Locally:**
 
 1. Clone this repo:
 
@@ -45,15 +45,15 @@ pip install -r requirements.txt
 streamlit run mymodel.py
 
 
-Files Included:
+# Files Included
 
-File Name	                                 Description
-mymodel.py	                               Streamlit app with model training & UI
-requirements.txt	                         Required Python packages
-social_media_engagement1.csv	             Dataset used for model training
+| File Name                      | Description                              |
+|-------------------------------|------------------------------------------|
+| `mymodel.py`                  | Streamlit app with model training & UI   |
+| `requirements.txt`            | Required Python packages                 |
+| `social_media_engagement1.csv`| Dataset used for model training          |
 
-
-Output Features:
+**Output Features:**
 
 i) Real-time sentiment prediction
 
