@@ -3,9 +3,15 @@ import joblib
 import numpy as np
 import pandas as pd
 
-# Load model and scaler
-model = joblib.load("saved_models/spam_model.pkl")
-scaler = joblib.load("saved_models/scaler.pkl")
+# ✅ Load model and scaler with caching to reduce startup time
+@st.cache_resource
+def load_model_and_scaler():
+   model = joblib.load("Celebal-main-Project/saved_models/spam_model.pkl")
+   scaler = joblib.load("Celebal-main-Project/saved_models/scaler.pkl")
+
+   return model, scaler
+
+model, scaler = load_model_and_scaler()
 
 # Set page config
 st.set_page_config(page_title="Email Spam Classifier", layout="wide")
