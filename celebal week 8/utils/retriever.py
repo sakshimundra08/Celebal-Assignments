@@ -1,19 +1,19 @@
 from sentence_transformers import SentenceTransformer
-import faiss
+from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
-# Load a small, fast embedding model
+# Load sentence transformer model
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-def create_faiss_index(corpus):
+# Create index as embedded vectors
+def create_faiss_index(corpus):  # Renamed for compatibility
     embeddings = model.encode(corpus)
-    dim = embeddings.shape[1]
-    index = faiss.IndexFlatL2(dim)
-    index.add(np.array(embeddings))
-    return index, corpus
+    return embeddings, corpus
 
-def query_faiss(index, corpus, query, top_k=5):
+# Query top_k most similar documents
+def query_faiss(embeddings, corpus, query, top_k=5):  # Renamed for compatibility
     query_vec = model.encode([query])
-    D, I = index.search(np.array(query_vec), top_k)
-    results = [corpus[i] for i in I[0]]
+    sims = cosine_similarity(query_vec, embeddings)[0]
+    top_indices = np.argsort(sims)[-top_k:][::-1]
+    results = [corpus[i] for i in top_indices]
     return results

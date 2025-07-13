@@ -19,7 +19,7 @@ __pycache__/
 # Ignore model/data outputs
 *.pkl
 *.h5
-*.csv
+
 
 # Ignore temporary OS files
 .DS_Store
