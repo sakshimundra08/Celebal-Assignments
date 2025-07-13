@@ -1,6 +1,7 @@
 # Ignore Python virtual environments
 venv/
 **/venv/
+spam-env/
 
 # Ignore Python cache files
 __pycache__/
@@ -23,3 +24,6 @@ __pycache__/
 # Ignore temporary OS files
 .DS_Store
 Thumbs.db
+
+# Ignore IDE configs
+.idea/
