@@ -4,10 +4,8 @@ import numpy as np
 import pandas as pd
 
 
-# Set page config
 st.set_page_config(page_title="Email Spam Classifier", layout="wide")
 
-# ✅ Load model and scaler with caching to reduce startup time
 @st.cache_resource
 def load_model_and_scaler():
    model = joblib.load("saved_models/spam_model.pkl")
@@ -18,8 +16,6 @@ def load_model_and_scaler():
 model, scaler = load_model_and_scaler()
 
 
-
-# Global Custom CSS
 st.markdown("""
     <style>
         /* ============ GLOBAL APP STYLING ============ */
@@ -103,10 +99,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Toggle light/dark theme
+
 theme = st.radio("🌗 Select Theme", ["🌞 Light Mode", "🌙 Dark Mode"], horizontal=True)
 
-# Theme-specific CSS overrides
+
+
 if theme == "🌞 Light Mode":
     st.markdown("""
         <style>
@@ -144,7 +141,7 @@ if theme == "🌞 Light Mode":
         </style>
     """, unsafe_allow_html=True)
 
-else:  # 🌙 Dark Mode
+else:  
     st.markdown("""
         <style>
             body, .stApp {
@@ -182,15 +179,14 @@ else:  # 🌙 Dark Mode
     """, unsafe_allow_html=True)
 
 
-# App Title
 
 st.title("📧 Email Spam Classifier")
 
 
-# Tabs
+
 tabs = st.tabs(["🧪 Quick Demo", "🧮 Full Manual Input", "📄 Upload CSV"])
 
-# Sample Inputs
+
 spam_samples = {
     "Spam Sample A": [0.2, 0.4, 0.6, 0.8, 0.1, 0.33, 0.57, 0.72, 0.09, 0.99],
     "Spam Sample B": [0.9, 0.8, 0.85, 0.95, 0.7, 0.75, 0.8, 0.9, 0.88, 0.92]
@@ -200,7 +196,7 @@ nonspam_samples = {
     "Non-Spam Sample B": [0.01, 0.03, 0.02, 0.04, 0.01, 0.00, 0.02, 0.01, 0.03, 0.00]
 }
 
-# 🧪 Quick Demo Tab
+
 with tabs[0]:
     st.subheader("🎯 Quick 10-Feature Test")
 
@@ -230,7 +226,7 @@ with tabs[0]:
         else:
             st.markdown('<div class="result-box not-spam">✅ This email is NOT Spam.</div>', unsafe_allow_html=True)
 
-# 🧮 Full Manual Input Tab
+
 with tabs[1]:
     st.subheader("🧠 Enter All 57 Features Manually")
 
@@ -250,7 +246,8 @@ with tabs[1]:
         else:
             st.markdown('<div class="result-box not-spam">✅ This email is NOT Spam.</div>', unsafe_allow_html=True)
 
-# 📄 Upload CSV Tab
+
+
 with tabs[2]:
     st.subheader("📁 Upload CSV File with 57 Features")
 
